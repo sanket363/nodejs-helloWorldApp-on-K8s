@@ -1,6 +1,7 @@
 # Stage 1: Build
 FROM node:14 AS build
 
+# Creating workdir inside the container
 WORKDIR /app
 
 # Copy package.json and package-lock.json
