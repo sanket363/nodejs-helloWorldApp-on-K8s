@@ -69,7 +69,7 @@ replicaCount: 1
 image:
   repository: snaket2628/nodejs-app
   pullPolicy: IfNotPresent
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
