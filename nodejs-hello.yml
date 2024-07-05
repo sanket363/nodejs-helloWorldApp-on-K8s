@@ -1,18 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argo-cd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  name: nodejs-hello
+  namespace: default
 spec:
-  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nodejs-hello
   source:
     repoURL: https://github.com/sanket363/nodejs-helloWorldApp-on-K8s.git
     path: nodjs-hello/
-    targetRevision: HEAD
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+    targetRevision: main
+  project: default
   syncPolicy:
     automated:
+      prune: true
       selfHeal: true
+
