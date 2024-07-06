@@ -7,9 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +22,9 @@ jobs:
 
       - name: Set image tag
         id: tag
-        run: echo "0.::set-output name=TAG::v${{ github.run_number }}.0"
+        run: |
+          RUN_NUMBER=$(printf "%03d" ${{ github.run_number }})
+          echo "::set-output name=TAG::v0.${RUN_NUMBER}.0"
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag snaket2628/nodejs-app:${{ steps.tag.outputs.TAG }}
