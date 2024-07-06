@@ -23,7 +23,7 @@ jobs:
       - name: Set image tag
         id: tag
         run: |
-          RUN_NUMBER=$(printf "%03d" ${{ github.run_number }})
+          RUN_NUMBER=${{ github.run_number }}
           echo "::set-output name=TAG::v0.${RUN_NUMBER}.0"
 
       - name: Build the Docker image
