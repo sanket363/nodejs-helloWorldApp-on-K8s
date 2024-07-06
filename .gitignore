@@ -1,1 +1,12 @@
 .DS_Storecharts/**/charts
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+*.tfplan.backup
+*.tfvars
+terraform.tfvars.json
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
