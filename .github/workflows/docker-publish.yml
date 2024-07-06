@@ -24,7 +24,7 @@ jobs:
 
       - name: Set image tag
         id: tag
-        run: echo "::set-output name=TAG::v${{ github.run_number }}.0.0"
+        run: echo "0.::set-output name=TAG::v${{ github.run_number }}.0"
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag snaket2628/nodejs-app:${{ steps.tag.outputs.TAG }}
