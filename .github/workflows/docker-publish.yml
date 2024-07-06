@@ -22,11 +22,12 @@ jobs:
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
 
-      - name: Set semantic version
-        id: semver
-        run: echo "::set-output name=SEMVER::$(git tag --sort=-v:refname | head -n 1)"
+      - name: Set image tag
+        id: tag
+        run: echo "::set-output name=TAG::v${{ github.run_number }}.0.0"
 
       - name: Build the Docker image
-        run: |
-          docker build . --file Dockerfile --tag snaket2628/nodejs-app:${{ steps.semver.outputs.SEMVER }}
-          docker push snaket2628/nodejs-app:${{ steps.semver.outputs.SEMVER }}
+        run: docker build . --file Dockerfile --tag snaket2628/nodejs-app:${{ steps.tag.outputs.TAG }}
+
+      - name: Docker Push
+        run: docker push snaket2628/nodejs-app:${{ steps.tag.outputs.TAG }}
