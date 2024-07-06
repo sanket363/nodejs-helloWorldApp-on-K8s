@@ -1,0 +1,10 @@
+---
+namespace: staging
+replicas:
+  - name: nodejs-app
+    count: 2
+images:
+  - name: snaket2628/nodejs-app
+    newTag: latest
+resources:
+  - ./my-app-base
