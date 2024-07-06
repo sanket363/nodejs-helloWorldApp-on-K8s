@@ -28,6 +28,3 @@ jobs:
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag snaket2628/nodejs-app:latest
-
-      - name: Docker Push
-        run: docker push snaket2628/nodejs-app:latest
